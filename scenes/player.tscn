@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cv7xnwnarke1f"]
+
+[ext_resource type="Texture2D" uid="uid://ciiuux4wtvfcv" path="res://paw.webp" id="1_hqtel"]
+[ext_resource type="Script" uid="uid://pyf7ynxth5yj" path="res://player.gd" id="1_sweqy"]
+[ext_resource type="Texture2D" uid="uid://c5rkxgthtd3h3" path="res://angry.webp" id="2_sweqy"]
+[ext_resource type="Texture2D" uid="uid://da3245agqoopn" path="res://nom.webp" id="3_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://co6o7duk6vr1u" path="res://mmn.mp3" id="4_1jxqw"]
+[ext_resource type="AudioStream" uid="uid://wwmgmlgtgrdd" path="res://nom.mp3" id="5_sweqy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dw050"]
+radius = 245.0
+
+[node name="Player" type="CharacterBody2D" unique_id=903608843]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_sweqy")
+
+[node name="Main" type="Sprite2D" parent="." unique_id=861193236]
+texture = ExtResource("1_hqtel")
+
+[node name="Angry" type="Sprite2D" parent="." unique_id=1231700452]
+visible = false
+texture = ExtResource("2_sweqy")
+
+[node name="Nom" type="Sprite2D" parent="." unique_id=2027069567]
+visible = false
+texture = ExtResource("3_2hs0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1581851519]
+shape = SubResource("CircleShape2D_dw050")
+
+[node name="EatSound" type="AudioStreamPlayer" parent="." unique_id=156265908]
+stream = ExtResource("5_sweqy")
+pitch_scale = 0.92
+
+[node name="DieSound" type="AudioStreamPlayer" parent="." unique_id=1102793666]
+stream = ExtResource("4_1jxqw")

@@ -1,0 +1,354 @@
+[gd_scene format=3 uid="uid://del5mo7pgpe8y"]
+
+[ext_resource type="Script" uid="uid://cwbvjo31hafgy" path="res://scripts/root.gd" id="1_28aoi"]
+[ext_resource type="AudioStream" uid="uid://p2wbsbo1dthd" path="res://assets/sounds/theme.mp3" id="1_pyidc"]
+[ext_resource type="Script" uid="uid://bslqu8sip84mo" path="res://scripts/audio_stream_player.gd" id="2_vvh5c"]
+[ext_resource type="PackedScene" uid="uid://cv7xnwnarke1f" path="res://scenes/player.tscn" id="3_vvh5c"]
+[ext_resource type="Texture2D" uid="uid://cjqpqih4e65jf" path="res://assets/sprites/happy.webp" id="6_l8v81"]
+[ext_resource type="AudioStream" uid="uid://3gqvq7bwydpt" path="res://assets/sounds/explosion.wav" id="6_vyht1"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_l8v81"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bf3um"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Root" type="Node2D" unique_id=328262078]
+script = ExtResource("1_28aoi")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1042870769]
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 648
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1872177986]
+modulate = Color(0.9411765, 0.72156864, 0.59607846, 1)
+scale = Vector2(96.875, 61.90625)
+texture = SubResource("CanvasTexture_l8v81")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1734910569]
+stream = ExtResource("1_pyidc")
+autoplay = true
+script = ExtResource("2_vvh5c")
+
+[node name="Player" parent="." unique_id=903608843 instance=ExtResource("3_vvh5c")]
+position = Vector2(575.00006, 580)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=491915559]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=655990809]
+offset_left = 96.0
+offset_top = 8.0
+offset_right = 281.0
+offset_bottom = 87.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel" unique_id=1325047121]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -4.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/HBoxContainer" unique_id=346502404]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("6_l8v81")
+expand_mode = 2
+
+[node name="VBoxContainer" type="GridContainer" parent="CanvasLayer/Panel/HBoxContainer" unique_id=949600754]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="Score" type="Label" parent="CanvasLayer/Panel/HBoxContainer/VBoxContainer" unique_id=1998206715]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Score"
+vertical_alignment = 1
+clip_text = true
+
+[node name="ScoreValue" type="Label" parent="CanvasLayer/Panel/HBoxContainer/VBoxContainer" unique_id=1649625392]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Highscore" type="Label" parent="CanvasLayer/Panel/HBoxContainer/VBoxContainer" unique_id=968595370]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Best"
+vertical_alignment = 1
+clip_text = true
+
+[node name="HighscoreValue" type="Label" parent="CanvasLayer/Panel/HBoxContainer/VBoxContainer" unique_id=765297043]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Panel2" type="Panel" parent="CanvasLayer" unique_id=224349838]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 87.0
+offset_bottom = 87.0
+
+[node name="Pause" type="Button" parent="CanvasLayer/Panel2" unique_id=1329464711]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAUSE"
+flat = true
+
+[node name="Flashbang" type="Panel" parent="CanvasLayer" unique_id=1259073208]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bf3um")
+
+[node name="GameOver" type="Panel" parent="CanvasLayer" unique_id=445028626]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -78.0
+offset_right = 128.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/GameOver" unique_id=417984549]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 123.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[shake rate=1 level=200][tornado alt=1][wave amp=50 freq=2][rainbow freq=0.1 sat=1 val=1]GAME          OVER[/rainbow][/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameOver" unique_id=145235966]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -33.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Restart" type="Button" parent="CanvasLayer/GameOver/HBoxContainer" unique_id=290730133]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Restart"
+
+[node name="Exit" type="Button" parent="CanvasLayer/GameOver/HBoxContainer" unique_id=1416709782]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit"
+
+[node name="Pause" type="Control" parent="CanvasLayer" unique_id=152989166]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause" type="Panel" parent="CanvasLayer/Pause" unique_id=1753984553]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -78.0
+offset_right = 128.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause/Pause" unique_id=1823307436]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -33.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Resume" type="Button" parent="CanvasLayer/Pause/Pause/HBoxContainer" unique_id=987541820]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resume"
+
+[node name="Restart" type="Button" parent="CanvasLayer/Pause/Pause/HBoxContainer" unique_id=725803088]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Restart"
+
+[node name="Exit" type="Button" parent="CanvasLayer/Pause/Pause/HBoxContainer" unique_id=1050162946]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Pause/Pause" unique_id=1069045472]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 116.0
+offset_right = 254.0
+offset_bottom = 123.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/Pause" unique_id=1036928469]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -18.0
+offset_right = -6.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Music" type="HBoxContainer" parent="CanvasLayer/Pause/Pause/VBoxContainer" unique_id=901169386]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause/Pause/VBoxContainer/Music" unique_id=900903611]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 11
+text = "MUSIC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVol" type="HSlider" parent="CanvasLayer/Pause/Pause/VBoxContainer/Music" unique_id=744099851]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+ticks_position = 3
+
+[node name="Sounds" type="HBoxContainer" parent="CanvasLayer/Pause/Pause/VBoxContainer" unique_id=670788283]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause/Pause/VBoxContainer/Sounds" unique_id=1506968411]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 11
+text = "SOUNDS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundsVol" type="HSlider" parent="CanvasLayer/Pause/Pause/VBoxContainer/Sounds" unique_id=2140017171]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+ticks_position = 3
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/Pause/Pause" unique_id=981847467]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 23
+bbcode_enabled = true
+text = "[wave]PAUSE"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Pause" unique_id=1553099980]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -378.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause/Panel" unique_id=421378726]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 26
+text = "CREDITS"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Pause/Panel" unique_id=1051878943]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -269.0
+offset_right = -9.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center][b]MUSIC[/b][/center]
+Elektronomia, Carpe - Sky High (Carpe Remix)
+
+[center][b]DEVELOPMENT[/b][/center]
+[rainbow]GLOR (ytrytio)[/rainbow] - founder, main dev
+[ul bullet=→]
+[color=lightblue][url=https://github.com/ytrytio]GitHub[/url]
+[url=https://t.me/cyber_glor]Telegram[/url]
+[url=https://signal.me/#eu/E62iNvYUrJcfx_6WVAleZJ0K4N-JJRcQy2wa1qrDVLTbS7w3cEFMa7mmJz-V6nPd]Signal[/url]
+[url=https://matrix.to/#/@glor:nope.chat]Matrix[/url][/color]
+[/ul]"
+
+[node name="Explosion" type="AudioStreamPlayer" parent="." unique_id=1232177928]
+stream = ExtResource("6_vyht1")
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
+[connection signal="pressed" from="CanvasLayer/Panel2/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOver/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOver/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/Pause/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/Pause/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/Pause/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Pause/Pause/VBoxContainer/Music/MusicVol" to="." method="_on_music_vol_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Pause/Pause/VBoxContainer/Sounds/SoundsVol" to="." method="_on_sounds_vol_value_changed"]
