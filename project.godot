@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="catu!catch"
-config/version="0.1.0"
+config/version="1.0.6"
 run/main_scene="uid://dnwd5dvilkki2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0.9411765, 0.72156864, 0.59607846, 1)
