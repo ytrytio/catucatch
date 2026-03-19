@@ -14,7 +14,10 @@ var touches = {}
 func _ready():
 	screen_size = get_viewport_rect().size
 
-func _input(event):
+func _unhandled_input(event):
+	if not (OS.has_feature("mobile") or OS.has_feature("web")):
+		return
+
 	if not Statuses.playing: 
 		touches.clear()
 		return

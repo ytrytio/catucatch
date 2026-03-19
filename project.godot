@@ -12,10 +12,17 @@ config_version=5
 
 config/name="catu!catch"
 config/version="0.1.0"
-run/main_scene="uid://del5mo7pgpe8y"
+run/main_scene="uid://dnwd5dvilkki2"
 config/features=PackedStringArray("4.6", "Forward Plus")
-boot_splash/show_image=false
-config/icon="uid://da3245agqoopn"
+boot_splash/bg_color=Color(0.9411765, 0.72156864, 0.59607846, 1)
+boot_splash/stretch_mode=0
+boot_splash/image="uid://dfs1p0r5edfo4"
+config/icon="uid://itlnpxgivo0v"
+boot_splash/minimum_display_time=1500
+
+[audio]
+
+buses/default_bus_layout="uid://bg4n7qxogmv8x"
 
 [autoload]
 
@@ -23,9 +30,14 @@ Statuses="*uid://bxw0iiodwd4px"
 
 [display]
 
-window/size/mode=4
-window/size/resizable=false
+window/size/mode=3
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[gui]
+
+common/snap_controls_to_pixels=false
+theme/custom_font="uid://dsrh5ahqog6xi"
 
 [input]
 

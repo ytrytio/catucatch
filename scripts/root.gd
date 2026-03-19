@@ -6,7 +6,7 @@ const red_color = Color("620000ff")
 @onready var food: PackedScene = preload("res://scenes/food.tscn")
 @onready var bomb: PackedScene = preload("res://scenes/bomb.tscn")
 
-@onready var bg: Sprite2D = $Sprite2D
+@onready var bg: ColorRect = $BackLayer/Sprite2D
 @onready var score = $CanvasLayer/Panel/HBoxContainer/VBoxContainer/ScoreValue
 @onready var best = $CanvasLayer/Panel/HBoxContainer/VBoxContainer/HighscoreValue
 @onready var player = $Player
@@ -18,6 +18,8 @@ const red_color = Color("620000ff")
 @onready var game_over = $CanvasLayer/GameOver
 @onready var flashbang = $CanvasLayer/Flashbang
 @onready var pause = $CanvasLayer/Pause
+@onready var music_slider = $CanvasLayer/Pause/Pause/VBoxContainer/Music/MusicVol
+@onready var sounds_slider = $CanvasLayer/Pause/Pause/VBoxContainer/Sounds/SoundsVol
 
 const RESPAWN_TIME = 0.5
 
@@ -37,7 +39,7 @@ func restart():
 		if child is Area2D:
 			child.queue_free()
 	player.main()
-	bg.modulate = main_color
+	bg.color = main_color
 	game_over.hide()
 	flashbang.hide()
 	pause.hide()
@@ -46,22 +48,14 @@ func restart():
 	song.play()
 
 func _ready() -> void:
-	get_tree().get_root().size_changed.connect(update_layout)
-	update_layout()
-	Statuses.highscore = Statuses.load_highscore()
+	print_tree()
+	music_slider.value = Statuses.music_volume * 100.0
+	sounds_slider.value = Statuses.sounds_volume * 100.0
+	
 	best.text = str(Statuses.highscore)
 	score.text = str(0)
-	start_spawn_loop()	
-
-func update_layout() -> void:
 	screen_size = get_viewport_rect().size
-	
-	bg.position = screen_size / 2
-	
-	if bg.texture:
-		var tex_size = bg.texture.get_size()
-		bg.scale.x = screen_size.x / tex_size.x
-		bg.scale.y = screen_size.y / tex_size.y
+	start_spawn_loop()	
 	
 func start_spawn_loop():
 	while true:
@@ -92,6 +86,7 @@ func spawn(x: float):
 		scene = food
 		
 	var object: Area2D = scene.instantiate()
+	object.z_index = -1
 	
 	if chance <= 0.2:
 		object.body_entered.connect(eat_bomb.bind(object))
@@ -111,14 +106,14 @@ func eat_bomb(_body, object):
 	object.queue_free()
 	pause.hide()
 	song.stop()
-	bg.modulate = red_color
+	bg.color = red_color
 	player.angry()
 	Statuses.playing = false
 	Statuses.died = true
 	
 	if Statuses.total > Statuses.highscore:
 		Statuses.highscore = Statuses.total
-		Statuses.save_highscore(Statuses.highscore)
+		Statuses.save_settings()
 		best.text = str(Statuses.highscore)
 	
 	await get_tree().create_timer(1.3).timeout
@@ -140,10 +135,23 @@ func _on_resume_pressed() -> void:
 	pause_game()
 
 func _on_music_vol_value_changed(value: float) -> void:
-	song.volume_linear = value / 100.0 
+	var volume = value / 100.0
+	Statuses.set_bus_volume("Music", volume)
+	Statuses.save_settings()
 
 func _on_sounds_vol_value_changed(value: float) -> void:
 	var volume = value / 100.0
-	player.eat_sound.volume_linear = volume
-	player.die_sound.volume_linear = volume
-	explosion.volume_linear = volume
+	Statuses.set_bus_volume("Sounds", volume)
+	Statuses.save_settings()
+
+
+func _on_rich_text_label_meta_clicked(meta: Variant) -> void:
+	var url = str(meta).strip_edges()
+	
+	if url.is_empty():
+		return
+	
+	if not (url.begins_with("http://") or url.begins_with("https://")):
+		return
+
+	OS.shell_open(url)

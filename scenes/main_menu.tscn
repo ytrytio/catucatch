@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dnwd5dvilkki2"]
+
+[ext_resource type="Theme" uid="uid://1sjs3a06a22e" path="res://assets/cat_theme.tres" id="1_ekxnf"]
+[ext_resource type="Script" uid="uid://caq4w7pm7trbw" path="res://scripts/main_menu.gd" id="2_8ln24"]
+[ext_resource type="FontFile" uid="uid://dsrh5ahqog6xi" path="res://assets/fonts/Chewy/Chewy-Regular.ttf" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://ci12lsiao0kqx" path="res://assets/sprites/paw.png" id="3_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://qwkja2of0c3k" path="res://assets/sprites/main.png" id="4_wu84c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ln24"]
+atlas = ExtResource("4_wu84c")
+region = Rect2(37, 33, 1304, 712)
+
+[sub_resource type="FontVariation" id="FontVariation_vue75"]
+base_font = ExtResource("2_bqqt6")
+spacing_glyph = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6cm7"]
+bg_color = Color(1, 0.3372549, 0.34117648, 0.50980395)
+corner_detail = 20
+shadow_color = Color(0.99304813, 0, 0.1965096, 0.3019608)
+shadow_size = 4
+
+[node name="MainMenu" type="Control" unique_id=687039737]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ekxnf")
+script = ExtResource("2_8ln24")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1472129768]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_8ln24")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1843769717]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 40.0
+offset_bottom = 142.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0.89364284, 0.0003265431, 0.16408798, 0.69411767)
+theme_override_colors/font_shadow_color = Color(0.60784316, 0, 0.09803922, 0.69411767)
+theme_override_constants/shadow_outline_size = 21
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = SubResource("FontVariation_vue75")
+theme_override_font_sizes/normal_font_size = 74
+theme_override_styles/normal = SubResource("StyleBoxFlat_l6cm7")
+bbcode_enabled = true
+text = "[wave]catu!catch"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="CatPic" type="TextureButton" parent="." unique_id=1052879820]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -196.0
+offset_right = 90.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(90, 90)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_bqqt6")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="pressed" from="CatPic" to="." method="_on_cat_pic_pressed"]

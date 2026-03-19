@@ -1,0 +1,87 @@
+[gd_resource type="Theme" format=3 uid="uid://1sjs3a06a22e"]
+
+[ext_resource type="StyleBox" uid="uid://bn2dqawx7e1qv" path="res://assets/ui/light/style_box_flat.tres" id="1_0m5dq"]
+[ext_resource type="StyleBox" uid="uid://v221e7se2w40" path="res://assets/ui/light/button_normal_style_box_flat.tres" id="1_6lph6"]
+[ext_resource type="StyleBox" uid="uid://cvlpg2073h4sj" path="res://assets/ui/light/button_hover_style_box_flat.tres" id="2_urewy"]
+[ext_resource type="StyleBox" uid="uid://uioyvih0bajt" path="res://assets/ui/light/button_pressed_style_box_flat.tres" id="2_wmu83"]
+[ext_resource type="FontFile" uid="uid://dsrh5ahqog6xi" path="res://assets/fonts/Chewy/Chewy-Regular.ttf" id="5_yhtoa"]
+
+[sub_resource type="FontVariation" id="FontVariation_yhtoa"]
+base_font = ExtResource("5_yhtoa")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_urewy"]
+color = Color(0.60784316, 0, 0.09803922, 0.69411767)
+grow_begin = 2.0
+grow_end = 2.0
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urewy"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+border_width_top = 3
+border_width_bottom = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_color = Color(0.99304813, 0, 0.1965096, 0.3019608)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhtoa"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+border_width_top = 3
+border_width_bottom = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_color = Color(0.99304813, 0, 0.1965096, 0.3019608)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mf1lv"]
+bg_color = Color(1, 0.3372549, 0.34117648, 0.50980395)
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(1, 0.3372549, 0.34117648, 0.50980395)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_color = Color(0.99304813, 0, 0.1965096, 0.3019608)
+shadow_size = 4
+
+[sub_resource type="FontVariation" id="FontVariation_mf1lv"]
+base_font = ExtResource("5_yhtoa")
+
+[sub_resource type="FontVariation" id="FontVariation_hx8v1"]
+base_font = ExtResource("5_yhtoa")
+variation_embolden = 0.64
+spacing_glyph = 2
+
+[sub_resource type="FontVariation" id="FontVariation_suiom"]
+base_font = ExtResource("5_yhtoa")
+
+[resource]
+Button/fonts/font = SubResource("FontVariation_yhtoa")
+Button/styles/disabled = ExtResource("2_wmu83")
+Button/styles/focus = ExtResource("2_urewy")
+Button/styles/hover = ExtResource("2_urewy")
+Button/styles/normal = ExtResource("1_6lph6")
+Button/styles/pressed = ExtResource("2_wmu83")
+CheckButton/styles/focus = ExtResource("2_wmu83")
+CheckButton/styles/hover = ExtResource("2_urewy")
+CheckButton/styles/hover_mirrored = ExtResource("2_urewy")
+CheckButton/styles/hover_pressed = ExtResource("2_wmu83")
+CheckButton/styles/hover_pressed_mirrored = ExtResource("2_urewy")
+CheckButton/styles/normal = ExtResource("1_6lph6")
+CheckButton/styles/pressed = ExtResource("2_wmu83")
+HSeparator/styles/separator = SubResource("StyleBoxLine_urewy")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_urewy")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_yhtoa")
+HSlider/styles/slider = SubResource("StyleBoxFlat_mf1lv")
+Label/fonts/font = SubResource("FontVariation_mf1lv")
+Panel/styles/panel = ExtResource("1_0m5dq")
+RichTextLabel/fonts/bold_font = SubResource("FontVariation_hx8v1")
+RichTextLabel/fonts/normal_font = SubResource("FontVariation_suiom")

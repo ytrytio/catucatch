@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://cvlpg2073h4sj"]
+
+[resource]
+bg_color = Color(1, 0.5287866, 0.5059559, 0.50980395)
+border_width_bottom = 2
+border_color = Color(1, 0.3372549, 0.34117648, 0.50980395)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_color = Color(0.99304813, 0, 0.1965096, 0.3019608)
+shadow_size = 4

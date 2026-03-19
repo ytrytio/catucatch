@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://berkyk01r4bh6"]
 
-[ext_resource type="Script" uid="uid://cugdy3f0hr3x" path="res://bomb.gd" id="1_4fn8o"]
-[ext_resource type="Texture2D" uid="uid://bqq830j22w7us" path="res://badcake.png" id="1_573fp"]
+[ext_resource type="Script" uid="uid://cugdy3f0hr3x" path="res://scripts/bomb.gd" id="1_4fn8o"]
+[ext_resource type="Texture2D" uid="uid://bqq830j22w7us" path="res://assets/sprites/badcake.png" id="1_573fp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pohk7"]
-size = Vector2(494, 319)
+size = Vector2(390.00012, 295.00006)
 
 [node name="Bomb" type="Area2D" unique_id=1790094071]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.25, 0.25)
 script = ExtResource("1_4fn8o")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1698313475]
 texture = ExtResource("1_573fp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=814972872]
-position = Vector2(0, 94.49999)
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(0, 92.499985)
+scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("RectangleShape2D_pohk7")
